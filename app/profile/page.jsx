@@ -14,12 +14,9 @@ export default function MyProfile() {
     const fetchPrompts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
-      console.log({ data });
 
       setPosts(data);
     };
-
-    console.log({ session });
 
     if (session?.user.id) fetchPrompts();
   }, [session]);

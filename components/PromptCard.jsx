@@ -21,6 +21,15 @@ export default function PromptCard({
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
   };
+
+  const viewProfile = (creator) => {
+    // clicking my id should navigate to my profile
+    if (creator._id === session?.user.id) {
+      router.push(`/profile`);
+    } else {
+      router.push(`/profile/${creator._id}?name=${creator.username}`);
+    }
+  };
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -33,7 +42,9 @@ export default function PromptCard({
             className="rounded-full object-contain"
           />
 
-          <div className="flex flex-col">
+          <div
+            className="flex flex-col"
+            onClick={() => viewProfile(post.creator)}>
             <h3 className="font-satoshi font-semibold text-gray-900">
               {post.creator.username}
             </h3>

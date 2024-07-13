@@ -19,10 +19,22 @@ const PromptCardList = ({ data, handleTagClick }) => {
 export default function Feed() {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
+    setSearchText(e.target.value);
   };
+
+  useEffect(() => {
+    const filteredPosts = posts.filter(
+      (p) =>
+        p.tag === searchText ||
+        p.prompt.includes(searchText) ||
+        p.creator.username.includes(searchText)
+    );
+    setFilteredPosts(filteredPosts);
+  }, [searchText]);
 
   // fetch prompts
   useEffect(() => {
@@ -49,7 +61,10 @@ export default function Feed() {
       </form>
 
       {/* Display prompts */}
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <PromptCardList
+        data={filteredPosts.length ? filteredPosts : posts}
+        handleTagClick={(tag) => setSearchText(tag)}
+      />
     </section>
   );
 }
