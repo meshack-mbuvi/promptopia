@@ -33,7 +33,7 @@ const EditPrompt = () => {
 
   /**
    * Delete a prompt
-   * @param } e
+   *
    */
   const editPrompt = async (e) => {
     e.preventDefault();
