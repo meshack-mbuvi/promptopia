@@ -75,6 +75,21 @@ Contributions are welcome! If you'd like to contribute, please follow these step
 4. Push to the branch: `git push origin feature/your-feature-name`
 5. Submit a pull request.
 
+## TODO:
+
+[ ] Implement search
+
+- Search by prompt
+- Search by tag
+- Search by username
+
+[ ] ImplementClick on tag
+
+[ ] Implement View other profiles
+
+## Screenshot
+![alt text](image.png)
+
 ## License
 
 This project is licensed under the MIT License.
